@@ -1,5 +1,5 @@
 # ToDoList
-This is a simple ToDoList app which was build using Django.<br>
+This is a simple ToDoList app which was build using Django for the Rabobank technical assignment.<br>
 It also contains a simple docker-compose to allow the app to be run on Docker<br>
 To run the app without using docker, run the following commands:
 <ul>
