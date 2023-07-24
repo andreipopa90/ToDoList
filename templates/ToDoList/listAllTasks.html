@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+{#    Load the script using Django framework#}
+    <script src="{% static 'scripts.js' %}"></script>
+</head>
+<body>
+<h1>Welcome!</h1>
+<button><a href="/newTask/">Add a new Task</a> </button>
+<button onclick="RemoveAllData()">Remove all tasks</a> </button><br>
+<div style="width: 30%; float: left">
+    <h3>My Tasks</h3>
+    <ol type="1">
+        {% for task in myTasks %}
+            {% if task.deleted == 0 and task.completed == 0 %}
+                <li> {{ task.name }} <br> {{ task.description }} <br> <button onclick="CompleteTask({{ task.id }})">Complete</button> <button onclick="DeleteTask({{ task.id }})">Delete</button></li>
+            {% elif task.completed == 1 and task.deleted == 0 %}
+                <li> {{ task.name }} <br> {{ task.description }} <br> <button onclick="DeleteTask({{ task.id }})">Delete</button></li>
+            {% else %}
+                <li style="text-decoration: line-through;">{{ task.name }} <br> {{ task.description }} </li>
+            {% endif %}
+        {% endfor %}
+    </ol>
+</div>
+<div style="width: 30%; float: left">
+    <h3>Completed Tasks</h3>
+    <ol type="1">
+        {% for task in myTasks %}
+            {% if task.completed == 1 and task.deleted == 0 %}
+                <li> {{ task.name }} <br> {{ task.description }} <br> <button onclick="DeleteTask({{ task.id }})">Delete</button></li>
+            {% endif %}
+        {% endfor %}
+    </ol>
+</div>
+
+<div style="width: 30%; float: left">
+    <h3>Deleted Tasks</h3>
+    <ol type="1">
+        {% for task in myTasks %}
+            {% if task.deleted == 1 %}
+                <li style="text-decoration: line-through;">{{ task.name }} <br> {{ task.description }} </li>
+            {% endif %}
+        {% endfor %}
+    </ol>
+</div>
+
+</body>
+</html>

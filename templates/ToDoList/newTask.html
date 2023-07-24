@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>New Task</title>
+</head>
+<body>
+<form action="/addTask/" method="POST">
+{#    Need the csrf token for Django to work#}
+{#    Load the form from backend using Django#}
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Add Task">
+</form>
+</body>
+</html>
