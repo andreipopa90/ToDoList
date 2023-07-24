@@ -17,6 +17,7 @@ COPY . /usr/src/app
 
 EXPOSE 1234
 
-CMD ["python", "manage.py", "makemigrations"]
+CMD ["python", "manage.py", "migrate"]
+CMD ["python", "manage.py", "makemigrations", "ToDoList"]
 CMD ["python", "manage.py", "migrate"]
 CMD ["python", "manage.py", "runserver", "0.0.0.0:1234"]
