@@ -17,7 +17,6 @@ COPY . ./
 
 EXPOSE 1234
 
-RUN python manage.py migrate
 RUN python manage.py makemigrations ToDoList
 RUN python manage.py migrate
 
